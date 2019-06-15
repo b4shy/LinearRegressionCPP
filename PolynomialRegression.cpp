@@ -7,6 +7,19 @@
 #include <cassert>
 #include <algorithm>
 
+float calculate_error(float datapoint, float label){
+    return pow(datapoint - label, 2);
+}
+
+
+void print_weights(std::vector<float> weights){
+
+    for(auto i : weights){
+        std::cout << "Weights: " << i << std::endl;
+    }
+}
+
+
 void PolynomialRegression::fit(int degree, int num_steps, float lr){
 
     assert(X_train.size() == y_train.size());
@@ -19,7 +32,6 @@ void PolynomialRegression::fit(int degree, int num_steps, float lr){
         if(i% 10000) {
             print_training_status();
         }
-
     }
 }
 
@@ -52,25 +64,20 @@ float PolynomialRegression::update_parameters(int degree, float lr) {
     for (int i = 0; i != weights.size(); ++i) {
         weights[i] -= lr * dM[i];
     }
-
 }
+
 
 void PolynomialRegression::initialize_weights(int degree) {
     weights.resize(degree,0);
 }
 
-void PolynomialRegression::print_weights(){
 
-    for(auto i : weights){
-        std::cout << "Weights: " << i << std::endl;
-    }
 
-}
 
 void PolynomialRegression::print_training_status(){
         float loss = calculate_loss();
         std::cout << "Actual Loss: " << loss << std::endl;
-        print_weights();
+        print_weights(weights);
 }
 
 
@@ -85,6 +92,4 @@ float PolynomialRegression::calculate_loss() {
     return loss;
 }
 
-float PolynomialRegression::calculate_error(float datapoint, float label){
-    return pow(datapoint - label, 2);
-}
+
