@@ -1,22 +1,18 @@
 #include <iostream>
-#include "LinearRegression.h"
+#include "PolynomialRegression.h"
 
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
 
     std::vector<float> X_train = {1,2,3,4};
-    std::vector<float> y_train = {1,4,9,16};
+    std::vector<float> y_train = {2,5,10,17};
     int degree = 3;
-    LinearRegression linreg = LinearRegression(X_train, y_train);
-    linreg.fit(degree);
+    PolynomialRegression polyreg= PolynomialRegression(X_train, y_train);
+    polyreg.fit(degree, 100000 ,0.002);
 
-    linreg.get_weights();
-    float pred = linreg.predict(7.0);
+    polyreg.get_weights();
+    float pred = polyreg.predict(10);
     std::cout << pred << std::endl;
-
-
-
 
     return 0;
 }

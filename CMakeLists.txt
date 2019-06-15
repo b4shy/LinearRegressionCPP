@@ -3,4 +3,4 @@ project(mlcpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(mlcpp main.cpp LinearRegression.cpp LinearRegression.h)
+add_executable(mlcpp main.cpp PolynomialRegression.cpp PolynomialRegression.h)
