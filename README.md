@@ -1,2 +1,1 @@
-# mlcpp
-Various Machine Learning Algorithms in C++
+# Linear Regression in C++
